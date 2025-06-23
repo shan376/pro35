@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        // Add any environment variables here if needed
-    }
-
     stages {
         stage('Checkout Code') {
             steps {
@@ -34,10 +30,10 @@ pipeline {
 
     post {
         failure {
-            echo 'Pipeline failed. Check logs for details.'
+            echo '❌ Pipeline failed. Check logs for details.'
         }
         success {
-            echo 'Pipeline completed successfully!'
+            echo '✅ Pipeline completed successfully!'
         }
     }
 }
