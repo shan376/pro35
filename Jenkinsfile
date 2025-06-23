@@ -1,22 +1,18 @@
 pipeline {
     agent any
-
     stages {
-
-        // ✅ Stage 1: Clone GitHub Repo
         stage('Clone Repo') {
             steps {
                 checkout([$class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/shan376/pro35.git',
-                        credentialsId: 'd5cc2ef1-b72c-460a-9455-b24e177e1993' //  Replaced with actual credential ID
+                        credentialsId: 'd5cc2ef1-b72c-460a-9455-b24e177e1993'
                     ]]
                 ])
             }
         }
 
-        //  Stage 2: Run Ansible Playbook
         stage('Run Ansible') {
             steps {
                 withEnv(["ANSIBLE_HOST_KEY_CHECKING=False"]) {
@@ -29,6 +25,5 @@ pipeline {
                 }
             }
         }
-
     }
 }
