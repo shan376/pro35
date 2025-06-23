@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'd5cc2ef1-b72c-460a-9455-b24e177e1993', url: 'https://github.com/shan376/pro35.git'
+                git branch: 'main', url: 'https://github.com/shan376/pro35.git', credentialsId: 'd5cc2ef1-b72c-460a-9455-b24e177e1993'
             }
         }
 
